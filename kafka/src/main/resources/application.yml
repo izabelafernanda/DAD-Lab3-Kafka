@@ -1,0 +1,23 @@
+#Nome: Izabela Fernanda Silva 
+#Código pessoa: 1331325
+#Disciplina: Desenvolvimento de Aplicações Distribuídas - Prof. Wagner Cipriano da Silva
+#Atividade Laboratório 3 - Implementar um Kafka Producer 
+
+spring:
+  kafka:
+    bootstrap-servers: puc-dad.servicebus.windows.net:9093
+    client-id: aluno-dad
+    properties:
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://puc-dad.servicebus.windows.net/;SharedAccessKeyName=aluno-dad;SharedAccessKey=Kds6a1hYMueVSSbu7bgiKXBpjBbzT4Kol+AEhNOt3FQ=";
+      sasl.mechanism: PLAIN
+      security.protocol: SASL_SSL
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: 1331325
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+
+topics:
+  subscriber: dad-atividade-kafka
